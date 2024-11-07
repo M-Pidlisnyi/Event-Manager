@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-
+   <p>Event created by {{event.user}}</p>
    <p>{{event.title}}</p>
    <p>{{event.description}}</p>
    <p>{{event.date}}</p>
@@ -10,4 +10,15 @@
 
    <a href="{% url 'event-update' event.pk %}"><button>Update</button></a> 
    <a href="{% url 'event-delete' event.pk %}"><button>Delete</button></a> 
+   <hr>
+   <a href="{% url "visitor-register" %}?event_id={{event.id}}&self=True"><button>Register myself</button></a>
+   <a href="{% url "visitor-register" %}?event_id={{event.id}}"><button>Register someone else</button></a>
+ 
+   <h3>Registered for event</h3>
+   {% for visitor in event.visitors.all  %}
+      <p>
+         {{visitor.first_name}} {{visitor.last_name}}
+      </p>
+   {% endfor %}
+   
 {% endblock content %}
