@@ -7,6 +7,16 @@
 </head>
 <body>
     
+    {% if request.user.is_authenticated %}
+        <p> Welcome {{request.user}} </p>
+        <form method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit">Log out</button>
+        </form>
+    {% else %}
+        <a href="{% url 'login' %}"><button>Log in</button></a>
+        <a href="{% url 'signup' %}"><button>Sing up</button></a>
+    {% endif %}
     {% block content %}
 
     {% endblock %}
