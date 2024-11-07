@@ -8,4 +8,6 @@
    <p>{{event.location}}</p>
    <p>{{event.organizer}}</p>
 
+   <a href="{% url 'event-update' event.pk %}"><button>Update</button></a> 
+   <a href="{% url 'event-delete' event.pk %}"><button>Delete</button></a> 
 {% endblock content %}

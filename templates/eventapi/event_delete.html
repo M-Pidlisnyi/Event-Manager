@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <p>
+        Do you wish to delete event {{event.title}}?
+    </p>
+    <form  method="post">
+        {%csrf_token%}
+        <input type="submit" value="Yes">
+    </form>
+    <a href="{% url 'event-detail' event.pk %}"><button type="button">No</button></a>
+
+{% endblock content %}
